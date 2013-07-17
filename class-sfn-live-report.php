@@ -80,8 +80,8 @@ class SFN_Live_Report {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		// Add actions to remove some unwanted scripts and styles that wp_head() forces on us
-		add_action( 'wp_print_scripts', array( $this, 'sfn_live_report_remove_scripts' ) );
-		add_action( 'wp_print_styles', array( $this, 'sfn_live_report_remove_styles' ) );
+		// add_action( 'wp_print_scripts', array( $this, 'sfn_live_report_remove_scripts' ) );
+		// add_action( 'wp_print_styles', array( $this, 'sfn_live_report_remove_styles' ) );
 
 		// Setup callback for AJAX, through WPs admin-ajax
 		add_action('wp_ajax_sfn-submit', array( $this, 'sfn_live_report_callback' ));
