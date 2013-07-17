@@ -1,0 +1,230 @@
+/*------------------------------------*\
+	_MIXINS.SCSS
+\*------------------------------------*/
+
+/*-------------------------------------------------------------------------
+| HIDDEN
+| Hides an element from both display and screenreaders.
+| h5bp.com/u
+|------------------------------------------------------------------------*/
+@mixin hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*-------------------------------------------------------------------------
+| VISUALLY HIDDEN
+| Hides an element from display but leaves it visible for screenreaders.
+| h5bp.com/v
+|------------------------------------------------------------------------*/
+@mixin visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*-------------------------------------------------------------------------
+| BLOCK GRID
+| Generates a block-grid of li-elements.
+| VARIABLES:
+| $per-row: How many items should sit in each row. (int)
+| $spacing: The spacing between li-blocks (px/em)
+| $base-style: Should the mixin apply base styling to the blocks? (bool)
+| $default-float: Float direction of the block items. (right/left)
+|
+| Original version from Foundation by ZURB.
+|------------------------------------------------------------------------*/
+@mixin block-grid($per-row:false, $spacing:1em, $base-style:true, $default-float:left) {
+
+  @if $base-style {
+    display: block;
+    padding: 0;
+    margin: 0 (-$spacing/2);
+    @include clearfix;
+
+    &>li {
+      display: inline;
+      height: auto;
+      float: $default-float;
+      padding: 0 ($spacing/2) $spacing;
+    }
+  }
+
+  @if $per-row {
+    &>li {
+      width: 100%/$per-row;
+      padding: 0 ($spacing/2) $spacing;
+
+      &:nth-of-type(n) { clear: none; }
+      &:nth-of-type(#{$per-row}n+1) { clear: both; }
+    }
+  }
+
+}
+
+/*-------------------------------------------------------------------------
+| MEDIA OBJECT
+| Mixin to create an instance of Nicole Sullivans media object.
+|
+| The mixin can be applied to a wrapper containing an img and a p or a
+| wrapper containing other elements with class media__img and media__body
+|
+| VARIABLES
+| $reverse: Indicates that the image should be floated to the right (bool)
+| $spacing: The horizontal spacing between elements (px/em)
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+@mixin media-object( $reverse: false, $spacing: 1em ) {
+  display:block;
+  @include clearfix;
+
+  @if $reverse {
+    &>img, &>.media-object__img {
+      float:right;
+      margin-left:1em;
+    }
+  } @else {
+    &>img, &>.media-object__img {
+      float:left;
+      margin-right:$spacing;
+      display:block;
+    }
+  }
+
+  &>p, &>.media-object__body {
+    overflow:hidden;
+    margin-bottom:0;
+  }
+}
+
+/*-------------------------------------------------------------------------
+| HEADINGS
+| Style any number of headings in one go.
+|
+| VARIABLES
+| $from: The first of headings to style, eg 1 = <h1>
+| $to : The last of headings to style, eg 6 = <h6>
+|
+| EXAMPLE
+| .body {
+|   @include headings (1, 4) {
+|     color: #f00;
+|   }
+| }
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+@mixin headings($from: 1, $to: 6){
+    %base-heading {
+        @content
+    }
+
+    @if $from >= 1 and $to <= 6{
+        @for $i from $from through $to{
+            h#{$i}{
+                @extend %base-heading;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------------------------------------
+| BUTTONS
+| Style a link as a button
+|
+| VARIABLES
+| $radius: The border radius of the button
+| $bgcolor: The background color of the button
+| @size: The size of the button
+| $hover: The color of the button when the user hovers it, it is active or in focus
+|
+| EXAMPLE
+| @include button(); // A standard button without background color
+| @include button( 6px, xl, #f00, #0f0 ); // An extra large button with 6px border radius,
+| // red background color and green background color on hover.
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+@mixin button ($radius: 4px, $size: m, $bgcolor: transparent, $hover: $bgcolor ) {
+  display:inline-block;
+  vertical-align:middle;
+  white-space:nowrap;
+  font-family:inherit;
+  font-size:100%;
+  cursor:pointer;
+  border:none;
+  margin:0;
+  padding-top: 0;
+  padding-bottom:0;
+  border-radius: $radius;
+  background-color: $bgcolor;
+  text-decoration:none;
+
+  @if $size == s {
+    padding-right:0.5em;
+    padding-left: 0.5em;
+    line-height:2;
+  }
+
+  @if $size == m {
+    padding-right:1em;
+    padding-left: 1em;
+    line-height:3;
+  }
+
+  @if $size == l {
+    padding-right:1.5em;
+    padding-left: 1.5em;
+    line-height:4;
+  }
+
+  @if $size == xl {
+    padding-right:2em;
+    padding-left: 2em;
+    line-height:5;
+  }
+
+  &:hover{
+      background-color: $hover;
+  }
+
+  &:active,
+  &:focus{
+      outline:none;
+      background-color: $hover;
+  }
+}
+
+/*-------------------------------------------------------------------------
+| GO LINKS
+| Style a link without underline and with a double right bracket at the end.
+| Use with caution, underlining links is an important standard on the web.
+|
+| VARIABLES
+| $color: The color of the link
+| $hover: Set to none if you don't want the link to be underlined on hover
+|
+| EXAMPLE
+| @include go-link(); // Black link with underline on hover
+| @include go-link( #f00, none ); // Red link without underline on hover
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+@mixin go-link ( $color: #000, $hover: underline ) {
+  text-decoration: none;
+  color: $color;
+
+  &:after {
+    content:"\00A0" "\00BB"!important;
+  }
+
+  &:hover {
+    text-decoration: $hover;
+  }
+}

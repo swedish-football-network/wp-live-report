@@ -1,0 +1,88 @@
+/*------------------------------------*\
+    VARS.SCSS
+\*------------------------------------*/
+/*------------------------------------*\
+    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+$use-grids:         true;
+$use-flexbox:       false;
+$use-columns:       false;
+$use-nav:           false;
+$use-options:       false;
+$use-pagination:    false;
+$use-breadcrumb:    false;
+$use-media:         false;
+$use-marginalia:    false;
+$use-island:        false;
+$use-block-list:    false;
+$use-matrix:        false;
+$use-split:         false;
+$use-this-or-this:  false;
+$use-link-complex:  false;
+$use-flyout:        false;
+$use-arrows:        false;
+$use-sprite:        false;
+$use-icon-text:     false;
+$use-beautons:      false;
+$use-lozenges:      false;
+$use-rules:         false;
+$use-stats:         false;
+$use-greybox:       false;
+
+
+
+/*------------------------------------*\
+    $OVERRIDES
+\*------------------------------------*/
+/**
+ * Place any variables that should override inuit.css’ defaults here.
+ */
+
+/**
+ * Base stuff
+ */
+$base-font-size:    16px;
+$base-line-height:  24px;
+
+/**
+ * Base font-family.
+ */
+$base-font-family:  sans-serif;
+
+/**
+ * Default colour for objects’ borders etc.
+ */
+
+/**
+ * Brand stuff
+ */
+$brand-face:        "Helvetica Neue", sans-serif;
+
+/**
+ * How big would you like round corners to be by default?
+ */
+$brand-round:        4px;
+
+
+
+
+/*------------------------------------*\
+    $CUSTOM
+\*------------------------------------*/
+/**
+ * Place any of your own variables that sit on top of inuit.css here.
+ */
+
+$grid-width:   1140px;
+$side-padding: 15px;
+
+/* COLORS */
+$base-ui-color:     #ccc;
+$brand-color:       #4a8ec2;
+

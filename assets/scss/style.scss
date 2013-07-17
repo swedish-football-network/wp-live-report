@@ -1,0 +1,33 @@
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+
+@charset "UTF-8";
+
+/**
+ * Setup imports and frameworks
+ */
+
+@import "../components/bourbon/bourbon";
+@import "../components/neat/neat";
+@import "../components/hampus-mixins/mixins";
+
+
+/*-------------------------------------------------------------------------
+| VARIABLES
+|------------------------------------------------------------------------*/
+$max-width: 71.25em;
+
+/* COLORS */
+
+
+/* BREAKPOINTS */
+$kiddo: new-breakpoint(min-width 30.0625em 4);
+$junior: new-breakpoint(min-width 48.0625em 12);
+$senior: new-breakpoint(min-width 73.25em 12);
+
+/*-------------------------------------------------------------------------
+| CSS
+|------------------------------------------------------------------------*/
+
+@import "base";

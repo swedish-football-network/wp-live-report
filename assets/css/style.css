@@ -1,0 +1,292 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ * Setup imports and frameworks
+ */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*------------------------------------*\
+	_MIXINS.SCSS
+\*------------------------------------*/
+/*-------------------------------------------------------------------------
+| HIDDEN
+| Hides an element from both display and screenreaders.
+| h5bp.com/u
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| VISUALLY HIDDEN
+| Hides an element from display but leaves it visible for screenreaders.
+| h5bp.com/v
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| BLOCK GRID
+| Generates a block-grid of li-elements.
+| VARIABLES:
+| $per-row: How many items should sit in each row. (int)
+| $spacing: The spacing between li-blocks (px/em)
+| $base-style: Should the mixin apply base styling to the blocks? (bool)
+| $default-float: Float direction of the block items. (right/left)
+|
+| Original version from Foundation by ZURB.
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| MEDIA OBJECT
+| Mixin to create an instance of Nicole Sullivans media object.
+|
+| The mixin can be applied to a wrapper containing an img and a p or a
+| wrapper containing other elements with class media__img and media__body
+|
+| VARIABLES
+| $reverse: Indicates that the image should be floated to the right (bool)
+| $spacing: The horizontal spacing between elements (px/em)
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| HEADINGS
+| Style any number of headings in one go.
+|
+| VARIABLES
+| $from: The first of headings to style, eg 1 = <h1>
+| $to : The last of headings to style, eg 6 = <h6>
+|
+| EXAMPLE
+| .body {
+|   @include headings (1, 4) {
+|     color: #f00;
+|   }
+| }
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| BUTTONS
+| Style a link as a button
+|
+| VARIABLES
+| $radius: The border radius of the button
+| $bgcolor: The background color of the button
+| @size: The size of the button
+| $hover: The color of the button when the user hovers it, it is active or in focus
+|
+| EXAMPLE
+| @include button(); // A standard button without background color
+| @include button( 6px, xl, #f00, #0f0 ); // An extra large button with 6px border radius,
+| // red background color and green background color on hover.
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| GO LINKS
+| Style a link without underline and with a double right bracket at the end.
+| Use with caution, underlining links is an important standard on the web.
+|
+| VARIABLES
+| $color: The color of the link
+| $hover: Set to none if you don't want the link to be underlined on hover
+|
+| EXAMPLE
+| @include go-link(); // Black link with underline on hover
+| @include go-link( #f00, none ); // Red link without underline on hover
+|
+| Original code from inuit.css
+|------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------
+| VARIABLES
+|------------------------------------------------------------------------*/
+/* COLORS */
+/* BREAKPOINTS */
+/*-------------------------------------------------------------------------
+| CSS
+|------------------------------------------------------------------------*/
+/*------------------------------------*\
+		_BASE.SCSS
+\*------------------------------------*/
+/**
+ * IMPORTS
+ */
+/**
+ * BASE STYLES
+ */
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.report-tools {
+  display: none;
+  max-width: 600px;
+  margin: 20px auto;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.input-group {
+  display: block;
+  float: left;
+  width: 50%;
+  padding: 0 6px;
+}
+.input-group:nth-child(odd) {
+  padding-left: 0;
+}
+.input-group:nth-child(even) {
+  padding-right: 0;
+}
+.input-group.full {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0;
+}
+.input-group input, .input-group label {
+  display: block;
+  width: 100%;
+}
+.input-group input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  font-size: 1.2em;
+}
+.input-group input[type=text]:active, .input-group input[type=text]:focus {
+  outline: none;
+  background-color: #D2F870;
+}
+.input-group input[type=submit] {
+  background-color: #48DD00;
+}
+.input-group input[type=submit]:hover {
+  background-color: #2DD700;
+}
+.input-group input[type=submit]:active {
+  background-color: #2DD700;
+  margin-top: 3px;
+  outline: none;
+}
+.input-group input[type=submit]:focus {
+  outline: none;
+}
+
+.dropdown {
+  /* Size and position */
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  /* Styles */
+  background: #fff;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  outline: none;
+  /* Font settings */
+  font-weight: bold;
+  color: #333;
+}
+.dropdown:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #333 transparent;
+}
+.dropdown .dropdown__list {
+  /* Size & position */
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  /* Styles */
+  background: white;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-weight: normal;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  list-style: none;
+  /* Hiding */
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 10px;
+}
+.dropdown .dropdown__list:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 13px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1) transparent;
+}
+.dropdown .dropdown__list:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 15px;
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: #fff transparent;
+}
+.dropdown .dropdown__list li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #e6e8ea;
+  box-shadow: inset 0 1px 0 white;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.dropdown .dropdown__list li:first-of-type a {
+  border-radius: 7px 7px 0 0;
+}
+.dropdown .dropdown__list li:last-of-type a {
+  border: none;
+  border-radius: 0 0 7px 7px;
+}
+.dropdown .dropdown__list li:hover a {
+  background: #f3f3f3;
+}
+.dropdown.active .dropdown__list {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/*# sourceMappingURL=style.css.map */
