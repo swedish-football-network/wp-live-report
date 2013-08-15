@@ -17,7 +17,7 @@
 		$dropdown_list = ""; // Will be populated with games played today
 		$dropdown_title = "Inga matcher idag...";
 		$todays_date = date('Ymd');
-		// $todays_date = '20130713'; // Uncomment for testing
+		$todays_date = '20130713'; // Uncomment for testing
 		// Get all games in Superserien that are played today
 		$args = array( 'post_type' => 'games', 'orderby' => 'date', 'meta_key' => 'serie', 'meta_value' => 'Superserien', 'meta_key' => 'datum', 'meta_value' => $todays_date );
 		$loop = get_posts($args);
@@ -43,6 +43,8 @@ EOL;
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-title" content="Resultat">
+		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		<title>Rapportera matchresultat</title>
 		<link rel="stylesheet" href="<?php echo plugins_url( 'assets/css/style.css', __FILE__ ); ?>">
 	</head>

@@ -268,7 +268,7 @@ class SFN_Live_Report {
 
 		// Check if the user is admin
 		if ( !current_user_can( 'manage_options' ) ) {
-			die('Du har inte behörighet att visa denna sida');
+			header('Location: http://www.google.com/');
 		}
 
 		// If everything checks out and a game is submitted we'll update the meta
@@ -289,7 +289,7 @@ class SFN_Live_Report {
 
 		// Check that the user has admin rights
 		if ( !current_user_can( 'manage_options' ) ) {
-			die('Du har inte behörighet att visa denna sida');
+			header('Location: http://www.google.com/');
 		}
 
 		// Store the output we want in a variable

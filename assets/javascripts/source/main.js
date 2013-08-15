@@ -32,6 +32,7 @@
 
 				obj.opts.on('click',function(){
 					var opt = $(this);
+					opt.addClass('currentGame');
 					obj.val = opt.text();
 					obj.index = opt.index();
 					obj.placeholder.text(obj.val);
