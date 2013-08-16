@@ -46,9 +46,9 @@ EOL;
 		<meta name="apple-mobile-web-app-title" content="Resultat">
 		<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
 		<title>Rapportera matchresultat</title>
-		<link rel="stylesheet" href="<?php echo plugins_url( 'assets/css/style.css', __FILE__ ); ?>">
+		<link rel="stylesheet" href="<?php echo plugins_url( 'assets/css/style.css', __FILE__ ); ?>?v=1.112">
 	</head>
-	<body>
+	<body <?php body_class('sfn-live-report'); ?> >
 		<h1 class="page-title">Rapportera matchresultat</h1>
 		<form id="report-form" action="post">
 			<input type="hidden" id="game-id" value="0">
@@ -68,7 +68,7 @@ EOL;
 					<input type="text" name="away-score" id="away-score">
 				</div>
 				<div class="input-group full">
-					<label for="time-stamp">Tid (Ex. Q2 7:31. Lämna tom när matchen är slut.)</label>
+					<label for="time-stamp">Tid <em>(Ex. Q2 7:31. Slut = tom)</em></label>
 					<input type="text" name="time-stamp" id="time-stamp" value="1Q 10:00">
 				</div>
 				<div class="input-group full">

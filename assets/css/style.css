@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
 /*------------------------------------*\
     STYLE.CSS
 \*------------------------------------*/
@@ -118,10 +119,15 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-body {
+body.sfn-live-report {
   max-width: 960px;
   margin: 0 auto;
   padding: 15px;
+  background-image: url("../images/background.jpg");
+  -webkit-background-size: cover;
+  background-size: cover;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  color: #fff;
 }
 
 img {
@@ -129,16 +135,36 @@ img {
 }
 
 .page-title {
+  max-width: 600px;
+  background: url("../images/sfn-logo.png") no-repeat;
+  background-size: auto 60px;
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.1em;
+  margin: 0em auto .5em;
+  line-height: 60px;
+  text-align: left;
+  padding-left: 80px;
+  white-space: nowrap;
 }
 
 .report-tools {
+  *zoom: 1;
+  max-width: 71.25em;
+  margin-left: auto;
+  margin-right: auto;
   display: none;
   max-width: 600px;
   margin: 20px auto;
-  border-top: 1px solid #ccc;
-  padding-top: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 7px;
+}
+.report-tools:before, .report-tools:after {
+  content: " ";
+  display: table;
+}
+.report-tools:after {
+  clear: both;
 }
 
 .input-group {
@@ -168,16 +194,21 @@ img {
   padding: 1em;
   border: 1px solid #ccc;
   font-size: 1.2em;
+  border-radius: 7px;
 }
 .input-group input[type=text]:active, .input-group input[type=text]:focus {
   outline: none;
   background-color: #D2F870;
 }
 .input-group input[type=submit] {
-  background-color: #48DD00;
+  background-color: #003f7e;
+  border: 2px solid #00254b;
+  color: #fff;
 }
 .input-group input[type=submit]:hover {
-  background-color: #2DD700;
+  background-color: #0058b1;
+  border: 2px solid #003f7e;
+  cursor: pointer;
 }
 .input-group input[type=submit]:active {
   background-color: #2DD700;
@@ -191,9 +222,9 @@ img {
 .dropdown {
   /* Size and position */
   position: relative;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 18px 10px;
   /* Styles */
   background: #fff;
   border-radius: 7px;

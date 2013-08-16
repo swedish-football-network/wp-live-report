@@ -87,7 +87,7 @@ class SFN_Live_Report {
 		add_action('wp_ajax_sfn-submit', array( $this, 'sfn_live_report_callback' ));
 
 		// Add the shortcode that sets up the whole operation
-		add_shortcode( 'rapportera', array( $this, 'report_games' ) );
+		add_shortcode( 'sfn-live-report', array( $this, 'report_games' ) );
 	}
 
 	/**

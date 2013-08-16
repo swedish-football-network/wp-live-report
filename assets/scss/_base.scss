@@ -6,6 +6,8 @@
  * IMPORTS
  */
 
+ @import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+
 /**
  * BASE STYLES
  */
@@ -14,10 +16,15 @@ html {
 	-webkit-font-smoothing: antialiased;
 }
 
-body {
+body.sfn-live-report {
 	max-width: 960px;
 	margin: 0 auto;
 	padding: 15px;
+	background-image: url("../images/background.jpg");
+	-webkit-background-size: cover;
+			background-size: cover;
+	font-family: 'Lato', 'Helvetica', sans-serif;
+	color: #fff;
 }
 
 img {
@@ -25,16 +32,26 @@ img {
 }
 
 .page-title {
+	max-width: 600px;
+	background: url("../images/sfn-logo.png") no-repeat;
+	background-size: auto 60px;
 	text-align: center;
-	font-size: 1.8em;
+	font-size: 1.1em;
+	margin: 0em auto .5em;
+	line-height: 60px;
+	text-align: left;
+	padding-left: 80px;
+	white-space: nowrap;
 }
 
 .report-tools {
+	@include outer-container;
 	display: none;
 	max-width: 600px;
 	margin: 20px auto;
-	border-top: 1px solid #ccc;
-	padding-top: 20px;
+	background: rgba(255,255,255,0.3);
+	padding: 20px;
+	border-radius: 7px;
 }
 
 .input-group {
@@ -68,6 +85,7 @@ img {
 		padding: 1em;
 		border: 1px solid #ccc;
 		font-size: 1.2em;
+		border-radius: 7px;
 	}
 
 	input[type=text]:active, input[type=text]:focus {
@@ -76,10 +94,14 @@ img {
 	}
 
 	input[type=submit] {
-		background-color: #48DD00;
+		background-color: $color-sfn-blue;
+		border: 2px solid darken($color-sfn-blue, 10%);
+		color: #fff;
 
 		&:hover {
-			background-color: #2DD700;
+			background-color: lighten($color-sfn-blue, 10%);
+			border: 2px solid $color-sfn-blue;
+			cursor: pointer;
 		}
 
 		&:active {
@@ -97,9 +119,9 @@ img {
 .dropdown {
 		/* Size and position */
 		position: relative;
-		max-width: 400px;
+		max-width: 600px;
 		margin: 0 auto;
-		padding: 10px;
+		padding: 18px 10px;
 
 		/* Styles */
 		background: #fff;
