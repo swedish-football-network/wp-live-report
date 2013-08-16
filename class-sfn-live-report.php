@@ -25,7 +25,7 @@ class SFN_Live_Report {
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.0.0';
+	protected $version = '1.1.0';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -276,8 +276,38 @@ class SFN_Live_Report {
 			update_post_meta($_POST['game'], 'hemmares', $_POST['home']);
 			update_post_meta($_POST['game'], 'bortares', $_POST['away']);
 			update_post_meta($_POST['game'], 'matchtid', $_POST['time']);
-			die($_POST['time']);
+
+			if( "true" === $_POST['sendToTwitter'] ) {
+				$url = "http://www.swedishfootballnetwork.se/games/" . $_POST['game'];
+				if( "true" === $_POST['finalScore'] ) {
+					$time = ' (Slut)';
+				} else {
+					$time = empty($_POST['time']) ? '' : ' (' . $_POST['time'] . ')';
+				}
+				$tweet = $_POST['home-team'] . ' - ' . $_POST['away-team'] . ' ' . $_POST['home'] . '-' . $_POST['away'] . $time . '. Mer info om matchen på: ' . $url;
+				$this->tweetUpdate($tweet);
+			}
 		}
+	}
+
+	private function tweetUpdate($tweet) {
+		require_once('twitteroauth/twitteroauth.php');
+		define('CONSUMER_KEY', 'VPWk1tJtrYVoTMTWTLe30A');
+		define('CONSUMER_SECRET', 'EohfFFQzUSlsQnVjG9aVS1fCdxVv6GCzv6wEkTXYSi8');
+		define('OAUTH_CALLBACK', 'http://example.com/twitteroauth/callback.php');
+
+		/* TOP SECRET STUFF, DO NOT SHARE! */
+		$access_token = array(
+			"oauth_token" => "1080024924-NpA52OvkNMzzeJivBpHKEEenBzfVdrutsr4qJy4",
+			"oauth_token_secret" => "Xuk19qsgsrlnkTr3VCLnvtwjg1yUnW1u6ykCnbOjkE"
+		);
+
+		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+		$parameters = array('status' => $tweet);
+		$content = $connection->post('statuses/update', $parameters);
+
+		return $content;
 	}
 
 	/**

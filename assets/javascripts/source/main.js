@@ -39,6 +39,10 @@
 
 					$('#report-tools').fadeIn(100);
 					$('#game-id').val( opt.find('.pick-game').data('game-id') );
+					$('#home-team').val( opt.find('.pick-game').data('home-team') );
+					$('#sendToTwitter').prop( 'checked', true );
+
+					$('#away-team').val( opt.find('.pick-game').data('away-team') );
 					$('#home-score').val( opt.find('.pick-game').data('home-score') );
 					$('#away-score').val( opt.find('.pick-game').data('away-score') );
 					$('#time-stamp').val( opt.find('.pick-game').data('game-time') );
