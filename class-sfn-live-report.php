@@ -266,9 +266,11 @@ class SFN_Live_Report {
 	 */
 	public function sfn_live_report_callback() {
 
-		// Check if the user is admin
-		if ( !current_user_can( 'manage_options' ) ) {
-			header('Location: http://www.google.com/');
+		// Check that the user has access rights
+		if ( !$this->check_access()  ) {
+			echo '<p>Du har inte behörighet att komma åt detta verktyg.</p>';
+			echo '<h3><a href="' . wp_login_url( site_url( $_SERVER["REQUEST_URI"] ) ) . '">Logga in</a></h3>';
+			die();
 		}
 
 		// If everything checks out and a game is submitted we'll update the meta
@@ -317,14 +319,24 @@ class SFN_Live_Report {
 	 */
 	public function report_games( $atts ) {
 
-		// Check that the user has admin rights
-		if ( !current_user_can( 'manage_options' ) ) {
-			header('Location: http://www.google.com/');
+		// Check that the user has access rights
+		if ( !$this->check_access()  ) {
+			echo '<p>Du har inte behörighet att komma åt detta verktyg.</p>';
+			echo '<h3><a href="' . wp_login_url( site_url( $_SERVER["REQUEST_URI"] ) ) . '">Logga in</a></h3>';
+			die();
 		}
 
 		// Store the output we want in a variable
 		$return_page = include('views/public.php');
 
 		return $return_page;
+	}
+
+	private function check_access() {
+		$current_user = wp_get_current_user();
+		if ( current_user_can( 'manage_options') || 6 === $current_user->ID  ) {
+			return true;
+		}
+		return false;
 	}
 }
