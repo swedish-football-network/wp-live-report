@@ -333,8 +333,12 @@ class SFN_Live_Report {
 	}
 
 	private function check_access() {
+		$allowed_users = array(
+			6, 		// Hampus Persson, SFN
+			373 	// Carl Klimfors, LG
+		);
 		$current_user = wp_get_current_user();
-		if ( current_user_can( 'manage_options') || 6 === $current_user->ID  ) {
+		if ( in_array($current_user->ID, $allowed_users) ) {
 			return true;
 		}
 		return false;
