@@ -15,9 +15,8 @@
 	$dropdown_list = ""; // Will be populated with games played today
 	$dropdown_title = "Inga matcher idag...";
 	$todays_date = date('Ymd');
-	$todays_date = '20130713'; // Uncomment for testing
-	// Get all games in Superserien that are played today
-	$args = array( 'post_type' => 'games', 'orderby' => 'date', 'meta_key' => 'serie', 'meta_value' => 'Superserien', 'meta_key' => 'datum', 'meta_value' => $todays_date );
+	// $todays_date = '20130713'; // Uncomment for testing
+	$args = array( 'numberposts' => 20, 'post_type' => 'games', 'orderby' => 'date', 'meta_key' => 'datum', 'meta_value' => $todays_date );
 	$loop = get_posts($args);
 
 	if( $loop ) {
