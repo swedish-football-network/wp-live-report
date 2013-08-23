@@ -42,6 +42,14 @@ img {
 	text-align: left;
 	padding-left: 80px;
 	white-space: nowrap;
+
+	@media (min-width:450px) and (max-width:639px) {
+		font-size: 1.6em;
+	}
+
+	@media (min-width:640px) {
+		font-size: 2em;
+	}
 }
 
 .report-tools {

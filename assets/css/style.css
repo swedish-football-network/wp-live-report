@@ -146,6 +146,16 @@ img {
   padding-left: 80px;
   white-space: nowrap;
 }
+@media (min-width: 450px) and (max-width: 639px) {
+  .page-title {
+    font-size: 1.6em;
+  }
+}
+@media (min-width: 640px) {
+  .page-title {
+    font-size: 2em;
+  }
+}
 
 .report-tools {
   *zoom: 1;
